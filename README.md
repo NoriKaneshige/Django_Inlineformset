@@ -172,7 +172,16 @@ FileFormset = forms.inlineformset_factory(
 </form>
 {% endblock %}
 ```
-> ## post_form.html
+> ## post_list.html
 ``` python
+{% extends 'app/base.html' %}
 
+{% block content %}
+<a href="{% url 'app:add_post' %}" class="btn btn-primary">Add Post</a>
+<hr>
+{% for post in post_list %}
+    <p><a href="{% url 'app:update_post' post.pk %}">{{ post.title }}</a></p>
+{% endfor %}
+
+{% endblock %}
 ```
